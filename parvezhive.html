@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PARVEZ HIVE — বাইক ও কার এক্সেসরিজ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;700&family=Baloo+Da+2:wght@500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --asphalt:#1B1B1E;
+    --steel:#26282C;
+    --steel-2:#303338;
+    --amber:#F5A623;
+    --chrome:#C9CDD3;
+    --off-white:#EDEDE9;
+    --rust:#C0392B;
+    --line:#3B3E44;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--asphalt);
+    color:var(--off-white);
+    font-family:'Hind Siliguri', 'Work Sans', sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Baloo Da 2', 'Oswald', sans-serif;
+    letter-spacing:0.01em;
+  }
+  .mono{font-family:'Hind Siliguri', 'JetBrains Mono', monospace; font-weight:600;}
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+
+  /* hazard stripe divider */
+  .hazard{
+    height:10px;
+    background:repeating-linear-gradient(135deg, var(--amber) 0 18px, var(--asphalt) 18px 36px);
+    opacity:0.9;
+  }
+
+  /* NAV */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(27,27,30,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-wrap{
+    max-width:1180px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px;
+  }
+  .logo{
+    font-family:'Oswald'; font-weight:700; font-size:22px;
+    letter-spacing:0.04em; color:var(--off-white);
+    display:flex; align-items:center; gap:10px;
+  }
+  .logo .dot{width:10px; height:10px; background:var(--amber); border-radius:2px; transform:rotate(45deg);}
+  nav ul{list-style:none; display:flex; gap:28px; font-size:14px; letter-spacing:0.03em;}
+  nav a{color:var(--chrome); transition:color .2s;}
+  nav a:hover{color:var(--amber);}
+  .nav-cta{
+    background:var(--amber); color:var(--asphalt); font-weight:600;
+    padding:9px 18px; border-radius:3px; font-size:14px;
+    font-family:'Baloo Da 2','Oswald'; letter-spacing:0.03em;
+  }
+
+  /* HERO */
+  .hero{
+    max-width:1180px; margin:0 auto;
+    padding:70px 24px 60px;
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:50px; align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Hind Siliguri','JetBrains Mono'; font-weight:600; font-size:12px; letter-spacing:0.08em;
+    color:var(--amber); border:1px solid var(--amber); border-radius:20px;
+    padding:5px 12px; margin-bottom:20px;
+  }
+  .hero h1{
+    font-size:clamp(38px,5vw,58px); line-height:1.05; font-weight:700;
+    color:var(--off-white);
+  }
+  .hero h1 span{color:var(--amber);}
+  .hero p{
+    margin-top:20px; max-width:460px; color:var(--chrome); font-size:16px;
+  }
+  .hero-ctas{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--amber); color:var(--asphalt); font-weight:600;
+    padding:14px 26px; border-radius:3px; font-family:'Baloo Da 2','Oswald'; letter-spacing:0.03em;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-ghost{
+    border:1px solid var(--line); color:var(--off-white);
+    padding:14px 26px; border-radius:3px; font-family:'Baloo Da 2','Oswald'; letter-spacing:0.03em;
+  }
+  .speedo{
+    position:relative; width:100%; aspect-ratio:1/1; max-width:380px; margin:0 auto;
+    border-radius:50%;
+    background:radial-gradient(circle at 50% 45%, var(--steel-2) 0%, var(--steel) 65%, var(--asphalt) 100%);
+    border:6px solid var(--steel-2);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 0 0 1px var(--line), inset 0 0 40px rgba(0,0,0,0.5);
+  }
+  .speedo::before{
+    content:"";
+    position:absolute; inset:14px; border-radius:50%;
+    border:2px dashed var(--line);
+  }
+  .speedo-inner{text-align:center;}
+  .speedo-inner .num{font-family:'Oswald'; font-size:56px; font-weight:700; color:var(--amber);}
+  .speedo-inner .lbl{font-family:'Hind Siliguri','JetBrains Mono'; font-weight:600; font-size:11px; color:var(--chrome); letter-spacing:0.1em; margin-top:4px;}
+
+  section{max-width:1180px; margin:0 auto; padding:70px 24px;}
+  .section-head{margin-bottom:38px;}
+  .section-tag{
+    font-family:'Hind Siliguri','JetBrains Mono'; font-weight:600; font-size:12px; color:var(--amber);
+    letter-spacing:0.1em; margin-bottom:10px;
+  }
+  .section-head h2{font-size:clamp(26px,3.5vw,36px); color:var(--off-white);}
+
+  /* CATEGORY STRIP */
+  .cat-strip{
+    display:flex; gap:14px; flex-wrap:wrap; padding:0 24px 40px; max-width:1180px; margin:0 auto;
+  }
+  .cat-pill{
+    border:1px solid var(--line); padding:9px 18px; border-radius:20px;
+    font-size:13px; color:var(--chrome); font-family:'Hind Siliguri','JetBrains Mono'; font-weight:600;
+  }
+  .cat-pill.active{background:var(--amber); color:var(--asphalt); border-color:var(--amber); font-weight:700;}
+
+  /* PRODUCT GRID */
+  .grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
+  }
+  .card{
+    background:var(--steel); border:1px solid var(--line); border-radius:6px;
+    overflow:hidden; display:flex; flex-direction:column;
+    transition:transform .25s ease, border-color .25s ease;
+  }
+  .card:hover{transform:translateY(-4px); border-color:var(--amber);}
+  .card-media{
+    aspect-ratio:4/3; background:var(--steel-2);
+    display:flex; align-items:center; justify-content:center;
+    font-size:46px; position:relative;
+  }
+  .card-media .tag{
+    position:absolute; top:10px; left:10px;
+    background:var(--rust); color:var(--off-white); font-size:11px;
+    font-family:'Hind Siliguri','JetBrains Mono'; font-weight:700; padding:3px 9px; border-radius:2px; letter-spacing:0.04em;
+  }
+  .card-body{padding:18px 18px 20px; display:flex; flex-direction:column; gap:10px; flex:1;}
+  .card-body .cat{font-family:'Hind Siliguri','JetBrains Mono'; font-weight:600; font-size:11px; color:var(--amber); letter-spacing:0.06em;}
+  .card-body h3{font-size:17px; color:var(--off-white); font-weight:600; letter-spacing:0.01em;}
+  .card-body .desc{font-size:13px; color:var(--chrome); flex:1;}
+  .price-row{
+    display:flex; align-items:center; justify-content:space-between; margin-top:6px;
+  }
+  .plate{
+    background:var(--amber); color:var(--asphalt);
+    font-family:'Hind Siliguri','JetBrains Mono'; font-weight:700; font-weight:700; font-size:15px;
+    padding:5px 12px; border-radius:3px; border:2px solid var(--asphalt);
+  }
+  .order-btn{
+    background:transparent; border:1px solid var(--chrome); color:var(--off-white);
+    font-size:12px; padding:8px 14px; border-radius:3px; font-family:'Baloo Da 2','Oswald';
+    letter-spacing:0.03em;
+  }
+  .order-btn:hover{border-color:var(--amber); color:var(--amber);}
+
+  /* WHY US */
+  .why-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:22px;}
+  .why-card{border-top:2px solid var(--amber); padding-top:16px;}
+  .why-card .n{font-family:'Hind Siliguri','JetBrains Mono'; font-weight:700; color:var(--amber); font-size:13px;}
+  .why-card h3{font-size:16px; margin:8px 0 6px; color:var(--off-white);}
+  .why-card p{font-size:13px; color:var(--chrome);}
+
+  /* CONTACT / CTA */
+  .cta-band{
+    background:var(--steel); border:1px solid var(--line); border-radius:10px;
+    padding:50px 40px; display:grid; grid-template-columns:1.2fr 0.8fr; gap:30px; align-items:center;
+  }
+  .cta-band h2{font-size:clamp(24px,3vw,32px); margin-bottom:10px;}
+  .cta-band p{color:var(--chrome); font-size:14px; max-width:420px;}
+  .contact-box{
+    background:var(--asphalt); border:1px solid var(--line); border-radius:6px; padding:24px;
+  }
+  .contact-box .row{display:flex; align-items:center; gap:12px; margin-bottom:16px; font-size:14px;}
+  .contact-box .row:last-child{margin-bottom:0;}
+  .contact-box .ic{
+    width:34px; height:34px; border-radius:6px; background:var(--steel-2);
+    display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0;
+  }
+  .contact-box .lbl{font-family:'Hind Siliguri','JetBrains Mono'; font-weight:600; font-size:11px; color:var(--chrome); letter-spacing:0.05em;}
+  .contact-box .val{font-weight:600; color:var(--off-white);}
+
+  footer{
+    border-top:1px solid var(--line); padding:30px 24px; text-align:center;
+    color:var(--chrome); font-size:13px;
+  }
+
+  /* FLOATING WHATSAPP */
+  .float-wa{
+    position:fixed; bottom:26px; right:26px; z-index:60;
+    background:var(--amber); color:var(--asphalt);
+    width:56px; height:56px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:26px; box-shadow:0 6px 18px rgba(0,0,0,0.4);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important;}
+  }
+
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr; padding-top:40px;}
+    .grid{grid-template-columns:repeat(2,1fr);}
+    .why-grid{grid-template-columns:repeat(2,1fr);}
+    .cta-band{grid-template-columns:1fr;}
+    nav ul{display:none;}
+  }
+  @media (max-width:560px){
+    .grid{grid-template-columns:1fr;}
+    .why-grid{grid-template-columns:1fr;}
+    .nav-wrap{padding:14px 18px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <div class="logo"><span class="dot"></span>PARVEZ<span style="color:var(--amber)">HIVE</span></div>
+    <nav>
+      <ul>
+        <li><a href="#products">প্রোডাক্ট</a></li>
+        <li><a href="#why">কেন আমরা</a></li>
+        <li><a href="#contact">যোগাযোগ</a></li>
+      </ul>
+    </nav>
+    <a class="nav-cta" href="#contact">অর্ডার করুন</a>
+  </div>
+</header>
+<div class="hazard"></div>
+
+<div class="hero">
+  <div>
+    <div class="eyebrow">● বাইক ও কার এক্সেসরিজ শপ</div>
+    <h1>রাস্তায় নামুন <span>স্টাইল</span> আর ভরসা নিয়ে</h1>
+    <p>হেলমেট থেকে শুরু করে কার এক্সেসরিজ — সবকিছু একজায়গায়। অরিজিনাল প্রোডাক্ট, ন্যায্য দাম, ফোন করলেই হোম ডেলিভারি।</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="#products">প্রোডাক্ট দেখুন →</a>
+      <a class="btn-ghost" href="tel:+8801XXXXXXXXX">📞 কল করুন</a>
+    </div>
+  </div>
+  <div class="speedo">
+    <div class="speedo-inner">
+      <div class="num">100%</div>
+      <div class="lbl">অরিজিনাল প্রোডাক্ট</div>
+    </div>
+  </div>
+</div>
+
+<div class="cat-strip">
+  <div class="cat-pill active">সব প্রোডাক্ট</div>
+  <div class="cat-pill">বাইক এক্সেসরিজ</div>
+  <div class="cat-pill">কার এক্সেসরিজ</div>
+  <div class="cat-pill">সেফটি গিয়ার</div>
+  <div class="cat-pill">অফার</div>
+</div>
+
+<section id="products">
+  <div class="section-head">
+    <div class="section-tag">০১ / ক্যাটালগ</div>
+    <h2>জনপ্রিয় প্রোডাক্টসমূহ</h2>
+  </div>
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-media">🪖<span class="tag">নতুন</span></div>
+      <div class="card-body">
+        <div class="cat">সেফটি গিয়ার</div>
+        <h3>ফুল-ফেস হেলমেট</h3>
+        <p class="desc">ISI মার্ক, ভালো ভেন্টিলেশন, সব ওয়েদারে আরামদায়ক।</p>
+        <div class="price-row">
+          <span class="plate">৳ ১,৮৫০</span>
+          <a class="order-btn" href="#contact">অর্ডার করুন</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-media">🪞</div>
+      <div class="card-body">
+        <div class="cat">বাইক এক্সেসরিজ</div>
+        <h3>সাইড মিরর সেট</h3>
+        <p class="desc">ইউনিভার্সাল ফিটিং, স্ক্র্যাচ-রেজিস্ট্যান্ট গ্লাস।</p>
+        <div class="price-row">
+          <span class="plate">৳ ৪৫০</span>
+          <a class="order-btn" href="#contact">অর্ডার করুন</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-media">💡<span class="tag">অফার</span></div>
+      <div class="card-body">
+        <div class="cat">বাইক এক্সেসরিজ</div>
+        <h3>LED হেডলাইট</h3>
+        <p class="desc">উজ্জ্বল আলো, কম বিদ্যুৎ খরচ, সহজ ইনস্টলেশন।</p>
+        <div class="price-row">
+          <span class="plate">৳ ৯৫০</span>
+          <a class="order-btn" href="#contact">অর্ডার করুন</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-media">🚗</div>
+      <div class="card-body">
+        <div class="cat">কার এক্সেসরিজ</div>
+        <h3>কার সিট কভার (ফুল সেট)</h3>
+        <p class="desc">লেদার ফিনিশ, ওয়াটারপ্রুফ, সহজে পরিষ্কার করা যায়।</p>
+        <div class="price-row">
+          <span class="plate">৳ ৩,২০০</span>
+          <a class="order-btn" href="#contact">অর্ডার করুন</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-media">📱</div>
+      <div class="card-body">
+        <div class="cat">কার এক্সেসরিজ</div>
+        <h3>মোবাইল হোল্ডার (ড্যাশ মাউন্ট)</h3>
+        <p class="desc">৩৬০° ঘোরানো যায়, শক্ত গ্রিপ, সব ফোনে ফিট।</p>
+        <div class="price-row">
+          <span class="plate">৳ ৩৫০</span>
+          <a class="order-btn" href="#contact">অর্ডার করুন</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-media">🧴</div>
+      <div class="card-body">
+        <div class="cat">বাইক এক্সেসরিজ</div>
+        <h3>চেইন লুব্রিকেন্ট</h3>
+        <p class="desc">চেইন স্মুথ রাখে, মরিচা প্রতিরোধ করে।</p>
+        <div class="price-row">
+          <span class="plate">৳ ২৮০</span>
+          <a class="order-btn" href="#contact">অর্ডার করুন</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="why">
+  <div class="section-head">
+    <div class="section-tag">০২ / ভরসার কারণ</div>
+    <h2>কেন PARVEZ HIVE থেকে কিনবেন</h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="n">এ.</div>
+      <h3>অরিজিনাল প্রোডাক্ট</h3>
+      <p>প্রতিটা প্রোডাক্ট যাচাই করা, কোনো নকল বা লো-কোয়ালিটি জিনিস নেই।</p>
+    </div>
+    <div class="why-card">
+      <div class="n">বি.</div>
+      <h3>ফোনেই অর্ডার</h3>
+      <p>ওয়েবসাইট ঘুরে দেখুন, পছন্দ হলে সরাসরি কল বা WhatsApp করুন।</p>
+    </div>
+    <div class="why-card">
+      <div class="n">সি.</div>
+      <h3>দ্রুত ডেলিভারি</h3>
+      <p>এলাকাভেদে দ্রুততম সময়ে হোম ডেলিভারির ব্যবস্থা।</p>
+    </div>
+    <div class="why-card">
+      <div class="n">ডি.</div>
+      <h3>ন্যায্য দাম</h3>
+      <p>মধ্যস্বত্বভোগী ছাড়া সরাসরি বিক্রি, তাই দাম থাকে সাশ্রয়ী।</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="cta-band">
+    <div>
+      <h2>পছন্দের প্রোডাক্ট বেছে নিয়েছেন?</h2>
+      <p>নিচের নম্বরে কল করুন অথবা WhatsApp-এ মেসেজ দিন — আমরা দ্রুত অর্ডার কনফার্ম করে ডেলিভারির ব্যবস্থা করবো।</p>
+    </div>
+    <div class="contact-box">
+      <div class="row">
+        <div class="ic">📞</div>
+        <div><div class="lbl">ফোন</div><div class="val">01XXX-XXXXXX</div></div>
+      </div>
+      <div class="row">
+        <div class="ic">💬</div>
+        <div><div class="lbl">WhatsApp</div><div class="val">01XXX-XXXXXX</div></div>
+      </div>
+      <div class="row">
+        <div class="ic">📍</div>
+        <div><div class="lbl">এলাকা</div><div class="val">চট্টগ্রাম</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 PARVEZ HIVE — সব ধরনের বাইক ও কার এক্সেসরিজ, এক জায়গায়।
+</footer>
+
+<a class="float-wa" href="https://wa.me/8801XXXXXXXXX" title="WhatsApp-এ মেসেজ দিন">💬</a>
+
+</body>
+</html>
